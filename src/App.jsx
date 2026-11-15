@@ -7,6 +7,7 @@ import AppLayout from "./pages/AppLayout.jsx";
 import Homepage from "./pages/Homepage.jsx";
 import Login from "./pages/Login.jsx";
 import CityList from "./components/CityList.jsx";
+import CountryList from "./components/CountryList.jsx";
 
 const BASEURL = "http://localhost:9000";
 
@@ -41,8 +42,8 @@ function App() {
           {/* Nested routes for the app */}
           <Route path="app" element={<AppLayout />}>
             <Route index element={<CityList cities={cities} isloading={laoding} />} />
-            <Route path="cities" element={<p>List of cities</p>} />
-            <Route path="countries" element={<p>List of countries</p>} />
+            <Route path="cities" element={<CityList cities={cities} isloading={laoding} />} />
+            <Route path="countries" element={<CountryList cities={cities} isloading={laoding} />} />
             <Route path="form" element={<p>List of forms</p>} />
           </Route>
           <Route path="login" element={<Login />} />

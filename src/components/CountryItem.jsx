@@ -1,4 +1,9 @@
 import styles from "./CountryItem.module.css";
+import propTypes from "prop-types";
+
+CountryItem.propTypes = {
+  country: propTypes.object.isRequired,
+}
 
 function CountryItem({ country }) {
   return (
