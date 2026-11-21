@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
+
 import Product from "./pages/Product.jsx";
 import Pricing from "./pages/Pricing";
 import PageNotFound from "./pages/PageNotFound.jsx";
@@ -8,6 +10,8 @@ import Homepage from "./pages/Homepage.jsx";
 import Login from "./pages/Login.jsx";
 import CityList from "./components/CityList.jsx";
 import CountryList from "./components/CountryList.jsx";
+import City from "./components/City.jsx";
+import Form from "./components/Form.jsx";
 
 const BASEURL = "http://localhost:9000";
 
@@ -41,10 +45,11 @@ function App() {
           <Route path="pricing" element={<Pricing />} />
           {/* Nested routes for the app */}
           <Route path="app" element={<AppLayout />}>
-            <Route index element={<CityList cities={cities} isloading={laoding} />} />
+            <Route index element={<Navigate replace to="cities"/>} />
             <Route path="cities" element={<CityList cities={cities} isloading={laoding} />} />
+              <Route path="cities/:id" element={<City/>}/>
             <Route path="countries" element={<CountryList cities={cities} isloading={laoding} />} />
-            <Route path="form" element={<p>List of forms</p>} />
+            <Route path="form" element={<Form/>} />
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="*" element={<PageNotFound />} />
